@@ -1,0 +1,31 @@
+{
+  "name": "currency_convector",
+  "version": "1.0.0",
+  "description": "simple currency convector",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js src/",
+    "start": "gulp"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "author": "Vladislav Shvorobuk",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "browser-sync": "^2.13.0",
+    "concat": "^1.0.3",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.4",
+    "gulp-watch": "^4.3.8",
+    "pre-commit": "^1.2.2"
+  }
+}
