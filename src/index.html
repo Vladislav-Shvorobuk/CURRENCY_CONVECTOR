@@ -16,13 +16,13 @@
 <body>
 
 
-  <div class="col-lg-6 container" ng-app>
+  <div class="col-lg-6 container" ng-app ng-init = 'currency = "UAH";currencyReseived = "USD"'>
     <h1>Сurrency convector</h1>
 
     
     <div class="buttons">
         <div class="btn-group btn-group-toggle col-lg-5 col-md-5 btn_group_sell_buy "  data-toggle="buttons">
-            <label class="btn btn-light active col-lg-6">
+            <label class="btn btn-light col-lg-6 active">
               <input type="radio" name="options" id="option1" autocomplete="off" checked> selling rate
             </label>
             <label class="btn btn-light col-lg-6">
@@ -40,29 +40,45 @@
 
     <form>
         <div class="form-row">
-          <div class="form-group col-lg-5 col-md-5">
-            <label for="inputEmail4">From</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="choose currency">
-
+          <div class="form-group col-lg-5 col-md-5"  >
+            <label for="inputChoose">From {{ currency }}</label>
+            <select class="form-control" id="inputChoose" placeholder="choose currency" ng-model="currency">
+                <option>UAH</option>
+                <option>USD</option>
+                <option>EUR</option>
+                <option>RUR</option>
+                <option>BTC</option>
+              </select>
           </div>
 
-          <button type="button" class="btn btn-outline col-lg-2 col-md-2  exchange" ng-disabled>revert</button>
+          <button type="button" class="btn btn-outline col-lg-2 col-md-2  exchange"
+           ng-disabled
+           ng-click = 'temp = currency; currency = currencyReseived; currencyReseived = temp'
+           >revert</button>
 
           <div class="form-group col-lg-5 col-md-5">
-            <label for="inputPassword4">To</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="choose currency">   
+            <label for="inputChooseRes">To {{ currencyReseived }}</label>
+            <select class="form-control" id="inputChooseRes" placeholder="choose currency" ng-model="currencyReseived">
+                <option>UAH</option>
+                <option>USD</option>
+                <option>EUR</option>
+                <option>RUR</option>
+                <option>BTC</option>
+              </select>
           </div>
+
           <div class="form-group col-lg-5 col-md-5">
-              <label for="inputEmail4">Amount</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="write ammount here...">
-  
+              <label for="count">Amount</label>
+              <input type="number" class="form-control" id="count" placeholder="write ammount here..."
+                    ng-model="givenAmount">
             </div>
   
-            <span class="col-lg-2 col-md-2 exchange ">or</span>
+            <span class="col-lg-2 col-md-2 exchange">or</span>
   
             <div class="form-group col-lg-5 col-md-5">
-              <label for="inputPassword4">Amount received</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="receive...">   
+              <label for="countRes">Amount received</label>
+              <input type="number" class="form-control" id="countRes"  placeholder="receive..."
+                    ng-model="givenAmount">   
             </div>
         </div>
       </form>
