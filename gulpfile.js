@@ -33,7 +33,7 @@ gulp.task('js:build', () => {
         ]) 
         .pipe(sourcemaps.init()) 
         .pipe(concat('index.js'))
-        .pipe(uglify()) 
+        // .pipe(uglify()) 
         .pipe(sourcemaps.write()) 
         .pipe(gulp.dest('dest/js')) 
         .pipe(reload({ stream: true }));

@@ -17,6 +17,7 @@ module.exports = {
     'beforeEach': true,
     'describe': true,
     'test': true,
+    'jquery': true,
   },
   'rules': {
     // possible errors
