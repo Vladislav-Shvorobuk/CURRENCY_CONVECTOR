@@ -9,22 +9,27 @@ body {
   font-size: 20px;
   padding-top: 100px;
   .container {
-    align-self: flex-end;
     padding: 30px;
+    background-color: #e3e6e911; 
     border: 1px solid #d8dadc; 
     border-radius: 5%;
     h1 {
       text-align: center;
       margin-bottom: 50px;
     }
-    .btn_group_sell_buy {
-      border: 1px solid #d8dadc; 
-      border-radius: 5%;
-      margin-bottom: 20px;
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
     }
-    .commision {
+    .btn {
+            border: 1px solid #d8dadc; 
+    }
+    .btn_group_sell_buy {
+      padding: 0;
+    }
+    .commision {   
       background-color: #d8dadc; 
-      margin-bottom: 18px;
     }
     .exchange {
       height: 50%;

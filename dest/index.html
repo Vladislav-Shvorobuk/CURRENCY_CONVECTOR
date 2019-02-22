@@ -16,46 +16,51 @@
 <body>
 
 
-  <div class="col-lg-7 container">
+  <div class="col-lg-6 container">
     <h1>Сurrency convector</h1>
 
-    <div class="btn-group btn-group-toggle  btn_group_sell_buy"  data-toggle="buttons">
-      <label class="btn btn-light active">
-        <input type="radio" name="options" id="option1" autocomplete="off" checked> selling rate
-      </label>
-      <label class="btn btn-light">
-        <input type="radio" name="options" id="option2" autocomplete="off"> purchase rate
-      </label>
+    
+    <div class="buttons">
+        <div class="btn-group btn-group-toggle col-lg-5 col-md-5 btn_group_sell_buy "  data-toggle="buttons">
+            <label class="btn btn-light active col-lg-6">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked> selling rate
+            </label>
+            <label class="btn btn-light col-lg-6">
+              <input type="radio" name="options" id="option2" autocomplete="off"> purchase rate
+            </label>
+          </div>
+      
+          <button type="button" class="btn btn-light col-lg-3 col-md-3 commision" data-toggle="button" aria-pressed="false" autocomplete="off">
+              2% commision
+          </button>
     </div>
 
 
-    <button type="button" class="btn btn-light commision" data-toggle="button" aria-pressed="false" autocomplete="off">
-        2% commision
-      </button>
+
 
     <form>
         <div class="form-row">
-          <div class="form-group col-lg-5">
+          <div class="form-group col-lg-5 col-md-5">
             <label for="inputEmail4">From</label>
             <input type="email" class="form-control" id="inputEmail4" placeholder="choose currency">
 
           </div>
 
-          <button type="button" class="btn btn-outline col-lg-2 exchange">revert</button>
+          <button type="button" class="btn btn-outline col-lg-2 col-md-2  exchange">revert</button>
 
-          <div class="form-group col-lg-5">
+          <div class="form-group col-lg-5 col-md-5">
             <label for="inputPassword4">To</label>
             <input type="email" class="form-control" id="inputEmail4" placeholder="choose currency">   
           </div>
-          <div class="form-group col-lg-5">
+          <div class="form-group col-lg-5 col-md-5">
               <label for="inputEmail4">Amount</label>
               <input type="email" class="form-control" id="inputEmail4" placeholder="write ammount here...">
   
             </div>
   
-            <button type="button" class="btn btn-outline col-lg-2 exchange ">revert</button>
+            <button type="button" class="btn btn-outline col-lg-2 col-md-2 exchange ">revert</button>
   
-            <div class="form-group col-lg-5">
+            <div class="form-group col-lg-5 col-md-5">
               <label for="inputPassword4">Amount received</label>
               <input type="email" class="form-control" id="inputEmail4" placeholder="receive...">   
             </div>
