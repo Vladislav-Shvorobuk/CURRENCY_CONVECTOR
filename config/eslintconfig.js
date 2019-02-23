@@ -18,6 +18,8 @@ module.exports = {
     'describe': true,
     'test': true,
     'jquery': true,
+    'angular': true,
+    'app': true
   },
   'rules': {
     // possible errors

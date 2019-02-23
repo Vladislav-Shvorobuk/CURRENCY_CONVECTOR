@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-
+const app = angular.module('app', []);
 
 const data = fetch('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11');
 data.then(result => result.json())

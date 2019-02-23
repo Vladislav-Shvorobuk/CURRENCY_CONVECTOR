@@ -9,90 +9,87 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" href="./css/main.css">
-  <script defer src="./js/index.js"></script>
-  <title>application</title>
+  <title>currency_convector</title>
 </head>
 
-<body>
-
-
-  <div class="col-lg-6 container" ng-app ng-init = 'currency = "UAH";currencyReseived = "USD"'>
+<body ng-app='app'>
+  
+  
+  <div class="col-lg-6 container" ng-controller="main">
     <h1>Сurrency convector</h1>
-
+    
     
     <div class="buttons">
-        <div class="btn-group btn-group-toggle col-lg-5 col-md-5 btn_group_sell_buy "  data-toggle="buttons">
-            <label class="btn btn-light col-lg-6 active">
-              <input type="radio" name="options" id="option1" autocomplete="off" checked> selling rate
-            </label>
-            <label class="btn btn-light col-lg-6">
-              <input type="radio" name="options" id="option2" autocomplete="off"> purchase rate
-            </label>
-          </div>
-      
-          <button type="button" class="btn btn-light col-lg-3 col-md-3 commision" data-toggle="button" aria-pressed="false" autocomplete="off">
-              2% commision
-          </button>
-    </div>
-
-
-
-
-    <form>
-        <div class="form-row">
-          <div class="form-group col-lg-5 col-md-5"  >
-            <label for="inputChoose">From {{ currency }}</label>
-            <select class="form-control" id="inputChoose" placeholder="choose currency" ng-model="currency">
-                <option>UAH</option>
-                <option>USD</option>
-                <option>EUR</option>
-                <option>RUR</option>
-                <option>BTC</option>
-              </select>
-          </div>
-
-          <button type="button" class="btn btn-outline col-lg-2 col-md-2  exchange"
-           ng-disabled
-           ng-click = 'temp = currency; currency = currencyReseived; currencyReseived = temp'
-           >revert</button>
-
-          <div class="form-group col-lg-5 col-md-5">
-            <label for="inputChooseRes">To {{ currencyReseived }}</label>
-            <select class="form-control" id="inputChooseRes" placeholder="choose currency" ng-model="currencyReseived">
-                <option>UAH</option>
-                <option>USD</option>
-                <option>EUR</option>
-                <option>RUR</option>
-                <option>BTC</option>
-              </select>
-          </div>
-
-          <div class="form-group col-lg-5 col-md-5">
-              <label for="count">Amount</label>
-              <input type="number" class="form-control" id="count" placeholder="write ammount here..."
-                    ng-model="givenAmount">
-            </div>
-  
-            <span class="col-lg-2 col-md-2 exchange">or</span>
-  
-            <div class="form-group col-lg-5 col-md-5">
-              <label for="countRes">Amount received</label>
-              <input type="number" class="form-control" id="countRes"  placeholder="receive..."
-                    ng-model="givenAmount">   
-            </div>
-        </div>
-      </form>
-
+      <div class="btn-group btn-group-toggle col-lg-5 col-md-5 btn_group_sell_buy "  data-toggle="buttons">
+        <label class="btn btn-light col-lg-6 active" 
+               ng-click = 'revert(!flagChecked, true)'>
+        <input type="radio" name="options" id="option1" autocomplete="off" checked> selling rate
+       </label>
+       <label class="btn btn-light col-lg-6" 
+               ng-click = 'revert(flagChecked, true)'>
+       <input type="radio" name="options" id="option2" autocomplete="off"> purchase rate
+    </label>
   </div>
+  
+  <button type="button" class="btn btn-light col-lg-3 col-md-3 commision">
+    2% commision
+  </button>
+</div>
 
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js" integrity="sha256-rilqatpiA1ZDu6m2BK2hef9keeJXWP+asd0X5ulfPmc="
-    crossorigin="anonymous">
-    </script>
+
+<form>
+  <div class="form-row">
+    <div class="form-group col-lg-5 col-md-5">
+      <label for="inputChoose">From {{ currency }}</label>
+      <select class="form-control" id="inputChoose" placeholder="choose currency" ng-model="currency">
+        <option>UAH</option>
+        <option>USD</option>
+        <option>EUR</option>
+        <option>RUR</option>
+        <option>BTC</option>
+      </select>
+    </div>
+    
+    <button type="button" class="btn btn-outline col-lg-2 col-md-2  exchange"
+    ng-click = 'revert(true, false)'>revert</button>
+    
+    <div class="form-group col-lg-5 col-md-5">
+      <label for="inputChooseRes">To {{ currencyReseived }}</label>
+      <select class="form-control" id="inputChooseRes" placeholder="choose currency" ng-model="currencyReseived">
+        <option>UAH</option>
+        <option>USD</option>
+        <option>EUR</option>
+        <option>RUR</option>
+        <option>BTC</option>
+      </select>
+    </div>
+    
+    <div class="form-group col-lg-5 col-md-5">
+      <label for="count">Amount</label>
+      <input type="number" class="form-control" id="count" placeholder="write ammount here..."
+      ng-model="givenAmount">
+    </div>
+    
+    <span class="col-lg-2 col-md-2 exchange">or</span>
+    
+    <div class="form-group col-lg-5 col-md-5">
+      <label for="countRes">Amount received</label>
+      <input type="number" class="form-control" id="countRes"  placeholder="receive..."
+      ng-model="givenAmount">   
+    </div>
+  </div>
+</form>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js" integrity="sha256-rilqatpiA1ZDu6m2BK2hef9keeJXWP+asd0X5ulfPmc="crossorigin="anonymous"></script>
+<script defer src="./js/index.js"></script>
 </body>
 
 </html>

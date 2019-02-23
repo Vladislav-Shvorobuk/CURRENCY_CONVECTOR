@@ -30,6 +30,7 @@ gulp.task('js:build', () => {
         [
             'src/**/main.js',
             'src/**/service.js',
+            'src/**/controller.js'
         ]) 
         .pipe(sourcemaps.init()) 
         .pipe(concat('index.js'))
