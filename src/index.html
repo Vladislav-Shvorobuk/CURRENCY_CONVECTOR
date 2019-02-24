@@ -21,12 +21,10 @@
     
     <div class="buttons">
       <div class="btn-group btn-group-toggle col-lg-5 col-md-5 btn_group_sell_buy "  data-toggle="buttons">
-        <label class="btn btn-light col-lg-6 active" 
-               ng-click = 'revert(!flagChecked, true)'>
+        <label class="btn btn-light col-lg-6 active" ng-click = 'revert(canRevert)'>
         <input type="radio" name="options" id="option1" autocomplete="off" checked> selling rate
        </label>
-       <label class="btn btn-light col-lg-6" 
-               ng-click = 'revert(flagChecked, true)'>
+       <label class="btn btn-light col-lg-6" ng-click = 'revert(!canRevert)'>
        <input type="radio" name="options" id="option2" autocomplete="off"> purchase rate
     </label>
   </div>
@@ -37,18 +35,17 @@
 </div>
 
 
-
-
 <form>
   <div class="form-row">
     <div class="form-group col-lg-5 col-md-5">
       <label for="inputChoose">From {{ currency }}</label>
-      <select class="form-control" id="inputChoose" placeholder="choose currency" ng-model="currency">
-        <option>UAH</option>
-        <option>USD</option>
-        <option>EUR</option>
-        <option>RUR</option>
-        <option>BTC</option>
+      <select class="form-control" id="inputChoose" placeholder="choose currency"
+              ng-model="currency" ng-change ="setStartPosition()">
+        <option ng-hide='currencyReseived==="UAH"'>UAH</option>
+        <option ng-hide='currencyReseived==="USD"'>USD</option>
+        <option ng-hide='currencyReseived==="EUR"'>EUR</option>
+        <option ng-hide='currencyReseived==="RUR"'>RUR</option>
+        <option ng-hide='currencyReseived==="BTC"'>BTC</option>
       </select>
     </div>
     
@@ -58,11 +55,11 @@
     <div class="form-group col-lg-5 col-md-5">
       <label for="inputChooseRes">To {{ currencyReseived }}</label>
       <select class="form-control" id="inputChooseRes" placeholder="choose currency" ng-model="currencyReseived">
-        <option>UAH</option>
-        <option>USD</option>
-        <option>EUR</option>
-        <option>RUR</option>
-        <option>BTC</option>
+        <option ng-hide='currency==="UAH"'>UAH</option>
+        <option ng-hide='currency==="USD"'>USD</option>
+        <option ng-hide='currency==="EUR"'>EUR</option>
+        <option ng-hide='currency==="RUR"'>RUR</option>
+        <option ng-hide='currency==="BTC"'>BTC</option>
       </select>
     </div>
     
