@@ -1,54 +1,37 @@
 
 app.controller('main', ['$scope', 'convertService', function($scope, convertService) {
-  $scope.currency = 'UAH';
-  $scope.currencyReseived = 'USD';
-  $scope.canRevert = false;
-  $scope.temp = '';
+  $scope.currencyFrom = 'UAH';
+  $scope.currencyTo = 'USD';
   $scope.list = convertService.list;
   $scope.givenAmount;
   $scope.receivedAmount;
-  $scope.commission = '0% commission';
+  $scope.fee = '0% fee';
 
-  $scope.revert = canRevert => {
-    if (canRevert) {
-      $scope.canRevert = !$scope.canRevert;
-      const labels = document.querySelectorAll('label');
-      labels.forEach(label => label.classList.toggle('active'));
-      $scope.temp = $scope.currency;
-      $scope.currency = $scope.currencyReseived;
-      $scope.currencyReseived = $scope.temp;
-      $scope.convert();
-    }
-  };
-
-  $scope.setStartPosition = () => {
+  $scope.revert = () => {
+    const temp = $scope.currencyFrom;
+    $scope.currencyFrom = $scope.currencyTo;
+    $scope.currencyTo = temp;
     $scope.convert();
-    const sellLabel = document.querySelector('.sell');
-    const buyLabel = document.querySelector('.buy');
-
-    if ($scope.currency === 'UAH' || $scope.currencyReseived === 'UAH') {
-      if (!sellLabel.classList.contains('active')) {
-        sellLabel.classList.add('active');
-        buyLabel.classList.remove('active');
-      }
-    }
   };
 
   $scope.convert = () => {
-    if ($scope.currency === 'UAH') {
-      const result = $scope.givenAmount / $scope.list[$scope.currencyReseived].sale;
-      $scope.receivedAmount = result + ((result / 100) * $scope.commission[0]);
+    const dataFrom = $scope.list[$scope.currencyFrom];
+    const dataTo = $scope.list[$scope.currencyTo];
+    const fee = $scope.fee[0];
+
+    if ($scope.currencyFrom === 'UAH') {
+      const result = $scope.givenAmount / dataTo.sale;
+      $scope.receivedAmount = result + ((result / 100) * fee);
+      return;
     }
 
-    if ($scope.currencyReseived === 'UAH') {
-      const result = $scope.givenAmount * $scope.list[$scope.currency].buy;
-      $scope.receivedAmount = result + ((result / 100) * $scope.commission[0]);
+    if ($scope.currencyTo === 'UAH') {
+      const result = $scope.givenAmount * dataFrom.buy;
+      $scope.receivedAmount = result + ((result / 100) * fee);
+      return;
     }
 
-    if ($scope.currency !== 'UAH' && $scope.currencyReseived !== 'UAH') {
-      const result = $scope.givenAmount * $scope.list[$scope.currency].buy
-      / $scope.list[$scope.currencyReseived].sale;
-      $scope.receivedAmount = result + ((result / 100) * $scope.commission[0]);
-    }
+    const result = $scope.givenAmount * dataFrom.buy / dataTo.sale;
+    $scope.receivedAmount = result + ((result / 100) * fee);
   };
 }]);

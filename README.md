@@ -4,11 +4,8 @@
 
 ##  Discription
 
-This is simple currency converter, which helps you to convert <br>
-UAH<br>
-USD<br>
-EUR<br>
-RUR
+  This is simple currency converter, which helps you to convert the most popular currencies: `UAH`, `USD`, `EUR`, `RUR`.
+
 
 ##  How you can start !?
 
@@ -21,4 +18,6 @@ For running programm, enter:
 ## Resourses
 
 To implement this currency convector I used free [PrivatBank Api](https://api.privatbank.ua/). 
+
+
 

@@ -13,64 +13,50 @@
 
 <body ng-app='app'>
 
-
-  <div class="col-lg-6 container" ng-controller="main">
+  <div class="col-lg-6 col-md-6 container" ng-controller="main">
     <h1>Сurrency convector</h1>
 
-
-    <div class="buttons">
-      <div class="btn-group btn-group-toggle col-lg-5 col-md-5 btn_group_sell_buy " data-toggle="buttons">
-        <label class="btn btn-light col-lg-6 sell active" ng-click='revert(canRevert)' ng-disabled="currency !== 'UAH'|| currencyReseived !== 'UAH'">
-          <input type="radio" name="options" id="option1" autocomplete="off" checked> BUY
-        </label>
-        <label class="btn btn-light col-lg-6 buy" ng-click='revert(!canRevert)'>
-          <input type="radio" name="options" id="option2" autocomplete="off"> SELL
-        </label>
-      </div>
-
-      <select class="form-control  col-lg-3 col-md-3" id="inputChooseRes" ng-model="commission" ng-change='convert()'>
-        <option selected>0% commission</option>
-        <option>1% commission</option>
-        <option>3% commission</option>
-        <option>5% commission</option>
+      <select class="form-control  col-lg-3 col-md-3" ng-model="fee" ng-change='convert()'>
+        <option selected>0% fee</option>
+        <option>1% fee</option>
+        <option>3% fee</option>
+        <option>5% fee</option>
       </select>
-    </div>
-
 
     <form>
       <div class="form-row">
         <div class="form-group col-lg-5 col-md-5">
-          <label for="inputChoose">From {{ currency }}</label>
-          <select class="form-control" id="inputChoose" ng-model="currency" ng-change="setStartPosition()">
-            <option ng-hide='currencyReseived==="UAH"'>UAH</option>
-            <option ng-hide='currencyReseived==="USD"'>USD</option>
-            <option ng-hide='currencyReseived==="EUR"'>EUR</option>
-            <option ng-hide='currencyReseived==="RUR"'>RUR</option>
+          <label for="inputCurrencyFrom">From {{ currencyFrom }}</label>
+          <select class="form-control" id="inputCurrencyFrom" ng-model="currencyFrom" ng-change='convert()'>
+            <option ng-hide='currencyTo==="UAH"'>UAH</option>
+            <option ng-hide='currencyTo==="USD"'>USD</option>
+            <option ng-hide='currencyTo==="EUR"'>EUR</option>
+            <option ng-hide='currencyTo==="RUR"'>RUR</option>
           </select>
         </div>
 
-        <button type="button" class="btn btn-outline col-lg-2 col-md-2  exchange" ng-click='revert(true)'>revert</button>
+        <button type="button" class="btn btn-outline col-lg-2 col-md-2  exchange" ng-click='revert()'>revert</button>
 
         <div class="form-group col-lg-5 col-md-5">
-          <label for="inputChooseRes">To {{ currencyReseived }}</label>
-          <select class="form-control" id="inputChooseRes" ng-model="currencyReseived" ng-change='setStartPosition()'>
-            <option ng-hide='currency==="UAH"'>UAH</option>
-            <option ng-hide='currency==="USD"'>USD</option>
-            <option ng-hide='currency==="EUR"'>EUR</option>
-            <option ng-hide='currency==="RUR"'>RUR</option>
+          <label for="inputCurrencyTo">To {{ currencyTo }}</label>
+          <select class="form-control" id="inputCurrencyTo" ng-model="currencyTo" ng-change='convert()'>
+            <option ng-hide='currencyFrom==="UAH"'>UAH</option>
+            <option ng-hide='currencyFrom==="USD"'>USD</option>
+            <option ng-hide='currencyFrom==="EUR"'>EUR</option>
+            <option ng-hide='currencyFrom==="RUR"'>RUR</option>
           </select>
         </div>
 
         <div class="form-group col-lg-5 col-md-5">
-          <label for="count">Amount</label>
-          <input type="number" class="form-control" id="count" placeholder="write ammount here..." ng-model='givenAmount' ng-change="convert()">
+          <label for="amount">Amount</label>
+          <input type="number" class="form-control" id="amount" placeholder="0.00" ng-model='givenAmount' ng-change="convert()">
         </div>
 
         <span class="col-lg-2 col-md-2 exchange">or</span>
 
         <div class="form-group col-lg-5 col-md-5">
-          <label for="countRes">Amount received</label>
-          <input class="form-control" id="countRes" placeholder="receive..." ng-model='receivedAmount'   ng-value="receivedAmount || null | number:2">
+          <label for="amountResult">Amount received</label>
+          <input class="form-control" id="amountResult" placeholder="0.00" ng-model='receivedAmount'   ng-value="receivedAmount || null | number:2">
         </div>
 
       </div>
