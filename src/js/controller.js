@@ -4,6 +4,10 @@ app.controller('main', ['$scope', 'convertService', function($scope, convertServ
   $scope.currencyReseived = 'USD';
   $scope.canRevert = false;
   $scope.temp = '';
+  $scope.list = convertService.list;
+  $scope.givenAmount;
+  $scope.receivedAmount;
+
 
   $scope.revert = canRevert => {
     if (canRevert) {
@@ -13,15 +17,35 @@ app.controller('main', ['$scope', 'convertService', function($scope, convertServ
       $scope.temp = $scope.currency;
       $scope.currency = $scope.currencyReseived;
       $scope.currencyReseived = $scope.temp;
+      $scope.convert();
     }
   };
 
   $scope.setStartPosition = () => {
-    const labels = document.querySelectorAll('label');
+    $scope.convert();
+    const sellLabel = document.querySelector('.sell');
+    const buyLabel = document.querySelector('.buy');
 
-    if (!labels[0].classList.contains('active')) {
-      labels.forEach(label => label.classList.toggle('active'));
+    if ($scope.currency === 'UAH' || $scope.currencyReseived === 'UAH') {
+      if (!sellLabel.classList.contains('active')) {
+        sellLabel.classList.add('active');
+        buyLabel.classList.remove('active');
+      }
     }
   };
-  // console.log(convertService.list);
+
+  $scope.convert = () => {
+    if ($scope.currency === 'UAH') {
+      $scope.receivedAmount = $scope.givenAmount / $scope.list[$scope.currencyReseived].sale;
+    }
+
+    if ($scope.currencyReseived === 'UAH') {
+      $scope.receivedAmount = $scope.givenAmount * $scope.list[$scope.currency].buy;
+    }
+
+    if ($scope.currency !== 'UAH' && $scope.currencyReseived !== 'UAH') {
+      $scope.receivedAmount = $scope.givenAmount * $scope.list[$scope.currency].buy 
+      / $scope.list[$scope.currencyReseived].sale;
+    }
+  };
 }]);
