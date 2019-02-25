@@ -1,1 +1,1 @@
-console.log('Hello!');
+const app = angular.module('app', []);
