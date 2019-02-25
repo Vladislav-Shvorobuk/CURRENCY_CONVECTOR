@@ -7,7 +7,7 @@ app.controller('main', ['$scope', 'convertService', function($scope, convertServ
   $scope.list = convertService.list;
   $scope.givenAmount;
   $scope.receivedAmount;
-
+  $scope.commission = '0% commission';
 
   $scope.revert = canRevert => {
     if (canRevert) {
@@ -36,16 +36,19 @@ app.controller('main', ['$scope', 'convertService', function($scope, convertServ
 
   $scope.convert = () => {
     if ($scope.currency === 'UAH') {
-      $scope.receivedAmount = $scope.givenAmount / $scope.list[$scope.currencyReseived].sale;
+      const result = $scope.givenAmount / $scope.list[$scope.currencyReseived].sale;
+      $scope.receivedAmount = result + ((result / 100) * $scope.commission[0]);
     }
 
     if ($scope.currencyReseived === 'UAH') {
-      $scope.receivedAmount = $scope.givenAmount * $scope.list[$scope.currency].buy;
+      const result = $scope.givenAmount * $scope.list[$scope.currency].buy;
+      $scope.receivedAmount = result + ((result / 100) * $scope.commission[0]);
     }
 
     if ($scope.currency !== 'UAH' && $scope.currencyReseived !== 'UAH') {
-      $scope.receivedAmount = $scope.givenAmount * $scope.list[$scope.currency].buy 
+      const result = $scope.givenAmount * $scope.list[$scope.currency].buy
       / $scope.list[$scope.currencyReseived].sale;
+      $scope.receivedAmount = result + ((result / 100) * $scope.commission[0]);
     }
   };
 }]);

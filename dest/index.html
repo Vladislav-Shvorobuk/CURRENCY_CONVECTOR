@@ -28,9 +28,12 @@
         </label>
       </div>
 
-      <button type="button" class="btn btn-light col-lg-3 col-md-3 commision">
-        2% commision
-      </button>
+      <select class="form-control  col-lg-3 col-md-3" id="inputChooseRes" ng-model="commission" ng-change='convert()'>
+        <option selected>0% commission</option>
+        <option>1% commission</option>
+        <option>3% commission</option>
+        <option>5% commission</option>
+      </select>
     </div>
 
 
@@ -38,7 +41,7 @@
       <div class="form-row">
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputChoose">From {{ currency }}</label>
-          <select class="form-control" id="inputChoose" placeholder="choose currency" ng-model="currency" ng-change="setStartPosition()">
+          <select class="form-control" id="inputChoose" ng-model="currency" ng-change="setStartPosition()">
             <option ng-hide='currencyReseived==="UAH"'>UAH</option>
             <option ng-hide='currencyReseived==="USD"'>USD</option>
             <option ng-hide='currencyReseived==="EUR"'>EUR</option>
@@ -50,7 +53,7 @@
 
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputChooseRes">To {{ currencyReseived }}</label>
-          <select class="form-control" id="inputChooseRes" placeholder="choose currency" ng-model="currencyReseived" ng-change='setStartPosition()'>
+          <select class="form-control" id="inputChooseRes" ng-model="currencyReseived" ng-change='setStartPosition()'>
             <option ng-hide='currency==="UAH"'>UAH</option>
             <option ng-hide='currency==="USD"'>USD</option>
             <option ng-hide='currency==="EUR"'>EUR</option>
