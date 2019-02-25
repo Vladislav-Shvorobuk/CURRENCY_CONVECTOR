@@ -27,5 +27,8 @@
     "gulp-uglify": "^1.5.4",
     "gulp-watch": "^4.3.8",
     "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
   }
 }
