@@ -1,6 +1,7 @@
-app.controller('main', ['$scope', 'convertService', function($scope, convertService) {
-  $scope.currencyFrom = 'UAH';
-  $scope.currencyTo = 'USD';
+app.controller('main', ['$scope', 'convertService', 'currency', function($scope, convertService, currency) {
+  $scope.currency = currency;
+  $scope.currencyFrom = currency[0];
+  $scope.currencyTo = currency[1];
   $scope.list = convertService.loadList();
   $scope.givenAmount;
   $scope.receivedAmount;

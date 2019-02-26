@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" href="./css/main.css">
-  <title>currency_convector</title>
+  <title>Currency_convector</title>
 </head>
 
 <body ng-app='app'>
@@ -17,35 +17,29 @@
     <h1>Сurrency convector</h1>
 
     <form class="mainForm">
-      <div class="form-row">
+      <div class="form-row firstForm">
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputCurrencyFrom">From {{ currencyFrom }}</label>
-          <select class="form-control" id="inputCurrencyFrom" ng-model="currencyFrom">
-            <option ng-hide='currencyTo==="UAH"'>UAH</option>
-            <option ng-hide='currencyTo==="USD"'>USD</option>
-            <option ng-hide='currencyTo==="EUR"'>EUR</option>
-            <option ng-hide='currencyTo==="RUR"'>RUR</option>
+          <select class="form-control" id="inputCurrencyFrom" ng-model="currencyFrom"
+            ng-options='key for key in currency | currencyFilter: currencyTo'>
           </select>
         </div>
 
-        <button type="button" class="col-lg-2 col-md-2  exchange" ng-click='revert();'>⮂</button>
+        <button type="button" class="col-lg-1 col-md-2  exchange" ng-click='revert();'>⮂</button>
 
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputCurrencyTo">To {{ currencyTo }}</label>
-          <select class="form-control" id="inputCurrencyTo" ng-model="currencyTo">
-            <option ng-hide='currencyFrom==="UAH"'>UAH</option>
-            <option ng-hide='currencyFrom==="USD"'>USD</option>
-            <option ng-hide='currencyFrom==="EUR"'>EUR</option>
-            <option ng-hide='currencyFrom==="RUR"'>RUR</option>
+          <select class="form-control" id="inputCurrencyTo" ng-model="currencyTo"
+            ng-options='key for key in currency | currencyFilter: currencyFrom'></select>
           </select>
         </div>
+      </div>
 
+      <div class="form-row secondForm">
         <div class="form-group col-lg-5 col-md-5">
           <label for="amount">Amount</label>
           <input type="number" class="form-control" id="amount" placeholder="0.00" ng-model='givenAmount'>
         </div>
-
-        <span class="col-lg-2 col-md-2 exchange">or</span>
 
         <div class="form-group col-lg-5 col-md-5">
           <label for="amountResult">Amount received</label>
