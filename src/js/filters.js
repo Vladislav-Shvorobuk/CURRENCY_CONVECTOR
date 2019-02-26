@@ -1,5 +1,5 @@
 app.filter('currencyFilter', function() {
-  return function(array, str2) {
-    return array.filter(item => item !== str2);
+  return function(array, compareValue) {
+    return array.filter(item => item !== compareValue);
   };
 });
