@@ -20,11 +20,8 @@
       <div class="form-row">
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputCurrencyFrom">From {{ currencyFrom }}</label>
-          <select class="form-control" id="inputCurrencyFrom" ng-model="currencyFrom">
-            <option ng-hide='currencyTo==="UAH"'>UAH</option>
-            <option ng-hide='currencyTo==="USD"'>USD</option>
-            <option ng-hide='currencyTo==="EUR"'>EUR</option>
-            <option ng-hide='currencyTo==="RUR"'>RUR</option>
+          <select class="form-control" id="inputCurrencyFrom" ng-model="currencyFrom"
+            ng-options='key for key in currency'>
           </select>
         </div>
 
@@ -32,20 +29,17 @@
 
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputCurrencyTo">To {{ currencyTo }}</label>
-          <select class="form-control" id="inputCurrencyTo" ng-model="currencyTo">
-            <option ng-hide='currencyFrom==="UAH"'>UAH</option>
-            <option ng-hide='currencyFrom==="USD"'>USD</option>
-            <option ng-hide='currencyFrom==="EUR"'>EUR</option>
-            <option ng-hide='currencyFrom==="RUR"'>RUR</option>
+          <select class="form-control" id="inputCurrencyTo" ng-model="currencyTo"
+            ng-options='key for key in currency'>
           </select>
         </div>
+      </div>
 
+      <div class="form-row secondForm">
         <div class="form-group col-lg-5 col-md-5">
           <label for="amount">Amount</label>
           <input type="number" class="form-control" id="amount" placeholder="0.00" ng-model='givenAmount'>
         </div>
-
-        <span class="col-lg-2 col-md-2 exchange">or</span>
 
         <div class="form-group col-lg-5 col-md-5">
           <label for="amountResult">Amount received</label>

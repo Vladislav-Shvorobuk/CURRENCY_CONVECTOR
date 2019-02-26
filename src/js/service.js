@@ -1,8 +1,8 @@
-app.service('convertService', ['$http', function($http) {
+app.service('convertService', ['$http', 'URL', function($http, URL) {
   this.list = {};
 
   this.loadList = () => {
-    $http.get('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11')
+    $http.get(URL)
       .then(({ data }) => {
         data.forEach(item => {
           this.list[item.ccy] = item;
@@ -10,7 +10,6 @@ app.service('convertService', ['$http', function($http) {
       });
     return this.list;
   };
-
 
   this.convert = args => {
     const { list, currencyFrom, currencyTo, fee, givenAmount } = args;
