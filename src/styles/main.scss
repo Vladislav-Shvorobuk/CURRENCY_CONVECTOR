@@ -40,8 +40,10 @@ body {
       align-self: flex-end;
       text-align: center;
     }
+    .firstForm{
+      justify-content: space-between;
+    }
     .secondForm {
-      display: flex;
       justify-content: space-between;
     }
   }
