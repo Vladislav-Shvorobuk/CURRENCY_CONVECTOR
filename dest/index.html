@@ -13,14 +13,14 @@
 
 <body ng-app='app'>
 
-  <div class="col-lg-5 col-md-6 container" ng-controller="main">
+  <div class="col-lg-6 col-md-7 container" ng-controller="main">
     <h1>Сurrency convector</h1>
 
     <form class="mainForm">
       <div class="form-row">
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputCurrencyFrom">From {{ currencyFrom }}</label>
-          <select class="form-control" id="inputCurrencyFrom" ng-model="currencyFrom" ng-change='convert()'>
+          <select class="form-control" id="inputCurrencyFrom" ng-model="currencyFrom">
             <option ng-hide='currencyTo==="UAH"'>UAH</option>
             <option ng-hide='currencyTo==="USD"'>USD</option>
             <option ng-hide='currencyTo==="EUR"'>EUR</option>
@@ -28,11 +28,11 @@
           </select>
         </div>
 
-        <button type="button" class="col-lg-2 col-md-2  exchange" ng-click='revert(); convert()'>⮂</button>
+        <button type="button" class="col-lg-2 col-md-2  exchange" ng-click='revert();'>⮂</button>
 
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputCurrencyTo">To {{ currencyTo }}</label>
-          <select class="form-control" id="inputCurrencyTo" ng-model="currencyTo" ng-change='convert()'>
+          <select class="form-control" id="inputCurrencyTo" ng-model="currencyTo">
             <option ng-hide='currencyFrom==="UAH"'>UAH</option>
             <option ng-hide='currencyFrom==="USD"'>USD</option>
             <option ng-hide='currencyFrom==="EUR"'>EUR</option>
@@ -42,7 +42,7 @@
 
         <div class="form-group col-lg-5 col-md-5">
           <label for="amount">Amount</label>
-          <input type="number" class="form-control" id="amount" placeholder="0.00" ng-model='givenAmount' ng-change="convert()">
+          <input type="number" class="form-control" id="amount" placeholder="0.00" ng-model='givenAmount'>
         </div>
 
         <span class="col-lg-2 col-md-2 exchange">or</span>
@@ -58,19 +58,19 @@
     <form name="feeForm" class="feeForm">
         <div>Fee: </div>
         <div>
-            <input type="radio" id="one" ng-model="fee" ng-change='convert()' ng-checked='true' value="0">
+            <input type="radio" id="one" ng-model="fee" ng-checked='true' value="0">
             <label for="one">0%</label>
         </div>
         <div>
-            <input type="radio" id="two" ng-model="fee" ng-change='convert()' value="1">
+            <input type="radio" id="two" ng-model="fee" value="1">
             <label for="two">1%</label>
         </div>
         <div>
-            <input type="radio" id="three" ng-model="fee" ng-change='convert()' value="3">
+            <input type="radio" id="three" ng-model="fee" value="3">
             <label for="three">3%</label>
         </div>
         <div>
-            <input type="radio" id="four" ng-model="fee" ng-change='convert()' value="5">
+            <input type="radio" id="four" ng-model="fee" value="5">
             <label for="four">5%</label>
         </div>
       </form>

@@ -2,10 +2,11 @@
 app.controller('main', ['$scope', 'convertService', function($scope, convertService) {
   $scope.currencyFrom = 'UAH';
   $scope.currencyTo = 'USD';
-  $scope.list = convertService.list;
+  $scope.list = convertService.loadList();
   $scope.givenAmount;
   $scope.receivedAmount;
   $scope.fee = '0';
+  $scope.convert = convertService.convert;
 
   $scope.revert = () => {
     const temp = $scope.currencyFrom;
@@ -13,24 +14,51 @@ app.controller('main', ['$scope', 'convertService', function($scope, convertServ
     $scope.currencyTo = temp;
   };
 
-  $scope.convert = () => {
-    const dataFrom = $scope.list[$scope.currencyFrom];
-    const dataTo = $scope.list[$scope.currencyTo];
-    const fee = $scope.fee[0];
-
-    if ($scope.currencyFrom === 'UAH') {
-      const result = $scope.givenAmount / dataTo.sale;
-      $scope.receivedAmount = result + ((result / 100) * fee);
+  $scope.$watch('currencyFrom', () => {
+    if (!$scope.list[$scope.currencyFrom] && !$scope.list[$scope.currencyTo]) {
       return;
     }
+    $scope.receivedAmount = convertService.convert(
+      $scope.list,
+      $scope.currencyFrom,
+      $scope.currencyTo,
+      $scope.fee[0],
+      $scope.givenAmount);
+  });
 
-    if ($scope.currencyTo === 'UAH') {
-      const result = $scope.givenAmount * dataFrom.buy;
-      $scope.receivedAmount = result + ((result / 100) * fee);
+  $scope.$watch('currencyTo', () => {
+    if (!$scope.list[$scope.currencyFrom] && !$scope.list[$scope.currencyTo]) {
       return;
     }
+    $scope.receivedAmount = convertService.convert(
+      $scope.list,
+      $scope.currencyFrom,
+      $scope.currencyTo,
+      $scope.fee[0],
+      $scope.givenAmount);
+  });
 
-    const result = $scope.givenAmount * dataFrom.buy / dataTo.sale;
-    $scope.receivedAmount = result + ((result / 100) * fee);
-  };
+  $scope.$watch('fee', () => {
+    if (!$scope.list[$scope.currencyFrom] && !$scope.list[$scope.currencyTo]) {
+      return;
+    }
+    $scope.receivedAmount = convertService.convert(
+      $scope.list,
+      $scope.currencyFrom,
+      $scope.currencyTo,
+      $scope.fee[0],
+      $scope.givenAmount);
+  });
+
+  $scope.$watch('givenAmount', () => {
+    if (!$scope.list[$scope.currencyFrom] && !$scope.list[$scope.currencyTo]) {
+      return;
+    }
+    $scope.receivedAmount = convertService.convert(
+      $scope.list,
+      $scope.currencyFrom,
+      $scope.currencyTo,
+      $scope.fee[0],
+      $scope.givenAmount);
+  });
 }]);
