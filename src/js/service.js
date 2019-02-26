@@ -1,4 +1,3 @@
-/* eslint-disable max-params */
 app.service('convertService', ['$http', function($http) {
   this.list = {};
 
@@ -13,25 +12,26 @@ app.service('convertService', ['$http', function($http) {
   };
 
 
-  this.convert = (list, currencyFrom, currencyTo, fee, givenAmount) => {
+  this.convert = args => {
+    const { list, currencyFrom, currencyTo, fee, givenAmount } = args;
     const dataFrom = list[currencyFrom];
     const dataTo = list[currencyTo];
 
     if (currencyFrom === 'UAH') {
       const result = givenAmount / dataTo.sale;
 
-      return result + ((result / 100) * fee);
+      return result - ((result / 100) * fee);
     }
 
     if (currencyTo === 'UAH') {
       const result = givenAmount * dataFrom.buy;
 
-      return result + ((result / 100) * fee);
+      return result - ((result / 100) * fee);
     }
 
     const result = givenAmount * dataFrom.buy / dataTo.sale;
 
-    return result + ((result / 100) * fee);
+    return result - ((result / 100) * fee);
   };
 }]);
 
