@@ -13,17 +13,10 @@
 
 <body ng-app='app'>
 
-  <div class="col-lg-6 col-md-6 container" ng-controller="main">
+  <div class="col-lg-5 col-md-6 container" ng-controller="main">
     <h1>Сurrency convector</h1>
 
-      <select class="form-control  col-lg-3 col-md-3" ng-model="fee" ng-change='convert()'>
-        <option selected>0% fee</option>
-        <option>1% fee</option>
-        <option>3% fee</option>
-        <option>5% fee</option>
-      </select>
-
-    <form>
+    <form class="mainForm">
       <div class="form-row">
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputCurrencyFrom">From {{ currencyFrom }}</label>
@@ -35,7 +28,7 @@
           </select>
         </div>
 
-        <button type="button" class="btn btn-outline col-lg-2 col-md-2  exchange" ng-click='revert()'>revert</button>
+        <button type="button" class="col-lg-2 col-md-2  exchange" ng-click='revert(); convert()'>⮂</button>
 
         <div class="form-group col-lg-5 col-md-5">
           <label for="inputCurrencyTo">To {{ currencyTo }}</label>
@@ -56,11 +49,31 @@
 
         <div class="form-group col-lg-5 col-md-5">
           <label for="amountResult">Amount received</label>
-          <input class="form-control" id="amountResult" placeholder="0.00" ng-model='receivedAmount'   ng-value="receivedAmount || null | number:2">
+          <input class="form-control" id="amountResult" placeholder="0.00" ng-model='receivedAmount' ng-value="receivedAmount || null | number:2">
         </div>
 
       </div>
     </form>
+
+    <form name="feeForm" class="feeForm">
+        <div>Fee: </div>
+        <div>
+            <input type="radio" id="one" ng-model="fee" ng-change='convert()' ng-checked='true' value="0">
+            <label for="one">0%</label>
+        </div>
+        <div>
+            <input type="radio" id="two" ng-model="fee" ng-change='convert()' value="1">
+            <label for="two">1%</label>
+        </div>
+        <div>
+            <input type="radio" id="three" ng-model="fee" ng-change='convert()' value="3">
+            <label for="three">3%</label>
+        </div>
+        <div>
+            <input type="radio" id="four" ng-model="fee" ng-change='convert()' value="5">
+            <label for="four">5%</label>
+        </div>
+      </form>
 
   </div>
 

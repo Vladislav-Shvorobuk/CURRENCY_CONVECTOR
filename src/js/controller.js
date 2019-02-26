@@ -5,13 +5,12 @@ app.controller('main', ['$scope', 'convertService', function($scope, convertServ
   $scope.list = convertService.list;
   $scope.givenAmount;
   $scope.receivedAmount;
-  $scope.fee = '0% fee';
+  $scope.fee = '0';
 
   $scope.revert = () => {
     const temp = $scope.currencyFrom;
     $scope.currencyFrom = $scope.currencyTo;
     $scope.currencyTo = temp;
-    $scope.convert();
   };
 
   $scope.convert = () => {
