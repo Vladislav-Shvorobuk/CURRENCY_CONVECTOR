@@ -31,6 +31,7 @@ gulp.task('js:build', () => {
             'src/**/main.js',
             'src/**/constants.js',
             'src/**/component.js',
+            'src/**/directives.js',
             'src/**/filters.js',
             'src/**/service.js',
             'src/**/controller.js'
