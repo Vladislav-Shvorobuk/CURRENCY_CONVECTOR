@@ -1,4 +1,4 @@
-app.controller('currencyController', ['$scope', 'convertService', 'currency', ($scope, convertService, currency) => {
+app.controller('convertController', ['$scope', 'convertService', 'currency', ($scope, convertService, currency) => {
   $scope.currency = currency;
   $scope.currencyFrom = currency[0];
   $scope.currencyTo = currency[1];
