@@ -18,9 +18,16 @@ body {
     text-align: center;
     justify-content: space-around;
   }
-  .modal-content {
-    margin: auto;
-    margin-top: 0;
+  .modalWindow {
+    position: fixed;
+    top: 0;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+    opacity: 0.93;
+    padding: 200px;
+    background: #060708;
   }
   .container {
     padding: 30px;
