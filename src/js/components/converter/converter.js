@@ -1,4 +1,4 @@
 app.component('convertComponent', {
-  templateUrl: 'main-container.html',
+  templateUrl: 'js/components/converter/templates/main-container.html',
   replace: true
 });

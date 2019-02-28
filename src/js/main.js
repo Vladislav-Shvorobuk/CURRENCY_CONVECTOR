@@ -1,6 +1,18 @@
-const app = angular.module('app', []);
+const app = angular.module('app', ['ui.router']);
 
-app.config(['convertServiceProvider', function(convertServiceProvider) {
+app.config(['convertServiceProvider', '$stateProvider', function(convertServiceProvider, $stateProvider) {
+  $stateProvider
+    .state({
+      name: 'home',
+      url: '',
+      component: 'greetingComponent'
+    })
+    .state({
+      name: 'converter',
+      url: '/converter',
+      component: 'convertComponent'
+    });
+
   convertServiceProvider.setURL('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11');
 }]);
 
