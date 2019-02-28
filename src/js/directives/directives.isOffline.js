@@ -1,8 +1,8 @@
 app.directive('isOffline', [function() {
   return {
-    restrict: 'A',
+    restrict: 'EA',
     replace: true,
-    templateUrl: `<div class="col-lg-8 modal-content" ng-show='isOffline'>
+    template: `<div class="modalWindow" ng-show='isOffline'>
                  <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ooops!</h5>
                  </div>

@@ -32,10 +32,10 @@ gulp.task('js:build', () => {
             'src/**/converter.constants.js',
             'src/**/converter.js',
             'src/**/greeting.js',
-            'src/**/directivesisOffline.js',
             'src/**/converter.filters.js',
             'src/**/converter.service.js',
-            'src/**/converter.controller.js'
+            'src/**/converter.controller.js',
+            'src/**/directives.isOffline.js'
         ]) 
         .pipe(sourcemaps.init()) 
         .pipe(concat('index.js'))
