@@ -13,17 +13,14 @@
 
 <body ng-app='app'>
 
-      <div class="col-lg-8 modal-content" ng-show='isOffline' is-ofline>
-          <div class="modal-header">
+    <div class="col-lg-8 modal-content" ng-show='isOffline' is-offline>
+        <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Ooops!</h5>
-          </div>
-          <div class="modal-body">
-             <h3>Internet connection does not exist!</h3>
-          </div>
-          <div class="modal-footer">
-
-          </div>
         </div>
+        <div class="modal-body">
+            <h3>Internet connection does not exist!</h3>
+        </div>
+    </div>
 
     <convert-component ng-show='!isOffline'></convert-component>
 
