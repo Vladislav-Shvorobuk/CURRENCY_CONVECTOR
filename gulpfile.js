@@ -20,7 +20,7 @@ var config = {
 gulp.task('webserver', () => browserSync(config));
 
 gulp.task('html:build', () => {
-    return gulp.src('src/*.html') 
+    return gulp.src('src/**/*.html') 
         .pipe(gulp.dest('dest/')) 
         .pipe(reload({ stream: true }));
 });
@@ -29,12 +29,12 @@ gulp.task('js:build', () => {
     return gulp.src(
         [
             'src/**/main.js',
-            'src/**/constants.js',
-            'src/**/component.js',
-            'src/**/directives.js',
-            'src/**/filters.js',
-            'src/**/service.js',
-            'src/**/controller.js'
+            'src/**/converter.constants.js',
+            'src/**/converter.js',
+            'src/**/directivesisOffline.js',
+            'src/**/converter.filters.js',
+            'src/**/converter.service.js',
+            'src/**/converter.controller.js'
         ]) 
         .pipe(sourcemaps.init()) 
         .pipe(concat('index.js'))

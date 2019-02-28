@@ -1,0 +1,1 @@
+app.constant('currency', ['UAH', 'USD', 'EUR', 'RUR']);
