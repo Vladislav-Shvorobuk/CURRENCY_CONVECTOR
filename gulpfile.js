@@ -31,6 +31,7 @@ gulp.task('js:build', () => {
             'src/**/main.js',
             'src/**/converter.constants.js',
             'src/**/converter.js',
+            'src/**/greeting.js',
             'src/**/directivesisOffline.js',
             'src/**/converter.filters.js',
             'src/**/converter.service.js',

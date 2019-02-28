@@ -13,6 +13,13 @@
 
 <body ng-app='app'>
 
+    <nav class="navbar navbar-dark bg-dark">
+        <form class="form-inline">
+            <button class="btn btn-outline-success home" ui-sref="home" ui-sref-active="active" type="button">Home</button>
+            <button class="btn btn-outline-success converter" ui-sref="converter" ui-sref-active="active" type="button">Converter</button>
+          </form>
+    </nav>
+
     <div class="col-lg-8 modal-content" ng-show='isOffline' is-offline>
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Ooops!</h5>
@@ -22,8 +29,7 @@
         </div>
     </div>
 
-    <convert-component ng-show='!isOffline'></convert-component>
-
+    <ui-view></ui-view>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
@@ -32,6 +38,7 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js" integrity="sha256-rilqatpiA1ZDu6m2BK2hef9keeJXWP+asd0X5ulfPmc="
     crossorigin="anonymous"></script>
+  <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
   <script defer src="./js/index.js"></script>
 </body>
 
