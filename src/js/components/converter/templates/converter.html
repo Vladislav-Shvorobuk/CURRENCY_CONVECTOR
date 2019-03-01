@@ -1,20 +1,20 @@
-<div class="col-lg-5 col-md-7 container" ng-controller="currencyController" ng-show='!isOffline'>
-  <h1>Сurrency convector</h1>
+<div class="col-lg-5 col-md-7  border-secondary container" ng-controller="convertController" ng-show='!isOffline'>
+  <h1>Сurrency converter</h1>
 
   <form class="mainForm">
     <div class="form-row firstForm">
       <div class="form-group col-lg-5 col-md-5">
         <label for="inputCurrencyFrom col-lg-5 col-md-5">From: {{ currencyFrom }}</label>
-        <select class="form-control" id="inputCurrencyFrom" ng-model="currencyFrom"
+        <select class="form-control border-secondary" id="inputCurrencyFrom" ng-model="currencyFrom"
           ng-options='key for key in currency | currencyFilter: currencyTo'>
         </select>
       </div>
 
-      <button type="button" class="col-lg-1 col-md-2  exchange" ng-click='revert();'>⮂</button>
+      <button class="btn btn-outline-secondary col-lg-1 col-md-2  exchange" ng-click='revert();'>⮂</button>
 
       <div class="form-group col-lg-5 col-md-5">
         <label for="inputCurrencyTo col-lg-5 col-md-5">To: {{ currencyTo }}</label>
-        <select class="form-control" id="inputCurrencyTo" ng-model="currencyTo"
+        <select class="form-control  border-secondary" id="inputCurrencyTo" ng-model="currencyTo"
           ng-options='key for key in currency | currencyFilter: currencyFrom'></select>
         </select>
       </div>
@@ -23,12 +23,12 @@
     <div class="form-row secondForm">
       <div class="form-group col-lg-5 col-md-5">
         <label for="amount col-lg-5 col-md-5">Amount</label>
-        <input type="number" class="form-control" id="amount" placeholder="0.00" min='0' ng-model='givenAmount'>
+        <input type="number" class="form-control border-secondary" id="amount" placeholder="0.00" min='0' ng-model='givenAmount'>
       </div>
 
       <div class="form-group col-lg-5 col-md-5">
         <label for="amountResult col-lg-5 col-md-5">Amount received</label>
-        <input class="form-control" id="amountResult" placeholder="0.00" ng-model='receivedAmount' ng-value="receivedAmount || null | number:2" readonly>
+        <input class="form-control border-secondary" id="amountResult" placeholder="0.00" ng-model='receivedAmount' ng-value="receivedAmount || null | number:2" readonly>
       </div>
 
     </div>

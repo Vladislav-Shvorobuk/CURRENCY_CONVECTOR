@@ -12,15 +12,14 @@
 </head>
 
 <body ng-app='app'>
-
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-light bg-secondary">
         <form class="form-inline">
             <button class="btn btn-outline-success home" ui-sref="home" ui-sref-active="active" type="button">Home</button>
             <button class="btn btn-outline-success converter" ui-sref="converter" ui-sref-active="active" type="button">Converter</button>
-          </form>
+        </form>
     </nav>
 
-    <div is-offline></div>
+    <div offline-message></div>
     <ui-view></ui-view>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
